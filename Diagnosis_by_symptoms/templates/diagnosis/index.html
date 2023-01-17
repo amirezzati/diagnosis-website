@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Diagnosis page-->
+<section class="diagnosis-section text-center" id="about">
+  <div class="container">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+      <h2 class="text-white mb-5">Select your symptoms:</h2>
+
+      <form class="mx-5 justify-content-center" name="search" action="testcgi.py" method="get">
+        {% if symptoms %}
+        {% for symptom in symptoms %}
+        <div class="form-check form-switch me-auto">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheck{{ symptom.id }}"
+            name="symp{{ symptom.id }}"
+          />
+          <label
+            class="form-check-label text-white text-center"
+            for="flexSwitchCheck{{ symptom.id }}"
+            >{{ symptom }}</label>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+        <button type="submit" class="btn btn-info mt-5 mb-5">
+          Diagnosis
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
