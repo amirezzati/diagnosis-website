@@ -10,20 +10,31 @@
 
       <h2 class="text-white mb-5">Select your symptoms:</h2>
 
-      <form class="mx-5 justify-content-center" name="search" action="testcgi.py" method="get">
+      <form class="symptoms-form mx-5 justify-content-center" name="search" action="/diagnosis/result/" method="post">
+        {% csrf_token %}
         {% if symptoms %}
         {% for symptom in symptoms %}
-        <div class="form-check form-switch me-auto">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="flexSwitchCheck{{ symptom.id }}"
-            name="symp{{ symptom.id }}"
-          />
-          <label
-            class="form-check-label text-white text-center"
-            for="flexSwitchCheck{{ symptom.id }}"
-            >{{ symptom }}</label>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8 justify-content-center">
+            <div class="form-check form-switch justify-content-center pe-0 ps-0" style="display: inline-flex;">
+              <label
+                class="form-check-label text-white col-8"
+                for="flexSwitchCheck{{ symptom.id }}" style="width: 500px; display: inline-flex;"
+                >{{ symptom.name }}</label>
+
+              <input
+                class="form-check-input col-4"
+                type="checkbox"
+                id="flexSwitchCheck{{ symptom.id }}"
+                value={{ symptom.id }}
+                name="symp{{ symptom.id }}"
+                style="display: inline-block;"
+              />
+              
+            </div>
+          </div>
+          <div class="col-2"></div>
         </div>
         {% endfor %}
         {% endif %}
