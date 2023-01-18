@@ -11692,3 +11692,11 @@ body {
 .footer {
   padding: 5rem 0;
 }
+
+.diagnosis-section label{
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.disease {
+  font-family: 'Vazirmatn', sans-serif;
+}

@@ -16,21 +16,20 @@
         {% for symptom in symptoms %}
         <div class="row">
           <div class="col-2"></div>
-          <div class="col-8 justify-content-center">
-            <div class="form-check form-switch justify-content-center pe-0 ps-0" style="display: inline-flex;">
-              <label
-                class="form-check-label text-white col-8"
-                for="flexSwitchCheck{{ symptom.id }}" style="width: 500px; display: inline-flex;"
-                >{{ symptom.name }}</label>
-
+          <div class="col-8">
+            <div class="form-check form-switch pe-0 ps-0" style="display: inline-block;">
               <input
                 class="form-check-input col-4"
                 type="checkbox"
                 id="flexSwitchCheck{{ symptom.id }}"
                 value={{ symptom.id }}
                 name="symp{{ symptom.id }}"
-                style="display: inline-block;"
+                style="display: inline-flexbox;"
               />
+              <label
+                class="form-check-label text-white col-8"
+                for="flexSwitchCheck{{ symptom.id }}" style="width: 300px; display: inline-flexbox; float: right;"
+                >{{ symptom.name }}</label>
               
             </div>
           </div>

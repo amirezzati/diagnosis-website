@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-import string
 
 from .models import Symptom
+from .model.model import predict
+
 
 def index(request):
     symptoms = Symptom.objects.order_by('id')
@@ -18,9 +19,7 @@ def result(request):
             else:
                 x.append(0)
 
-        print(x)
-
-        return render(request, 'diagnosis/result.html')
+        return render(request, 'diagnosis/result.html', {'result': predict(x)})
     else:
         return redirect('diagnosis:index')
         
